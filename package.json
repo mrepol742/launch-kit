@@ -1,6 +1,6 @@
 {
   "name": "launch-kit",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A small, framework-independent TypeScript evaluation engine for product launches, private betas, early access, staged rollouts, and separately launched features.",
   "type": "module",
   "license": "MIT",
