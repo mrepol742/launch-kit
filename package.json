@@ -1,5 +1,5 @@
 {
-  "name": "launchkit",
+  "name": "launch-kit",
   "version": "0.1.0",
   "description": "A small, framework-independent TypeScript evaluation engine for product launches, private betas, early access, staged rollouts, and separately launched features.",
   "type": "module",
@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/launchkit-dev/launchkit.git"
+    "url": "git+https://github.com/mrepol742/launch-kit.git"
   },
   "keywords": [
     "feature-flags",
