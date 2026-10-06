@@ -3,11 +3,11 @@
 Control who gets access to what, and when.
 
 ```bash
-npm install launchkit
+npm install @mrepol742/launch-kit
 ```
 
 ```ts
-import { createLaunch } from "launchkit";
+import { createLaunch } from "@mrepol742/launch-kit";
 
 const launch = createLaunch({
   phases: {
@@ -24,11 +24,11 @@ const decision = await launch.canAccess({ id: "usr_123", roles: ["tester"] });
 // { allowed: true, reason: "ALLOWED", message: "Access granted.", phase: "beta", ... }
 ```
 
-## What is LaunchKit?
+## What is Launch-Kit?
 
-LaunchKit is a small, framework-independent TypeScript evaluation engine for product launches,
+Launch-Kit is a small, framework-independent TypeScript evaluation engine for product launches,
 private betas, early access, staged rollouts, and separately launched features. Your application
-owns authentication, users, persistence, and invite storage; LaunchKit evaluates your rules.
+owns authentication, users, persistence, and invite storage; Launch-Kit evaluates your rules.
 
 The core has no production dependencies, telemetry, network calls, database, or framework imports.
 It runs anywhere modern server-side JavaScript runs, including Node.js, Next.js, Nuxt, Express,
@@ -36,16 +36,16 @@ Fastify, NestJS, and serverless functions.
 
 ## Installation
 
-LaunchKit is ESM-first and requires Node.js 20 or newer.
+Launch-Kit is ESM-first and requires Node.js 20 or newer.
 
 ```bash
-npm install launchkit
+npm install @mrepol742/launch-kit
 ```
 
 ## Quick Start
 
 ```ts
-import { createLaunch } from "launchkit";
+import { createLaunch } from "@mrepol742/launch-kit";
 
 const launch = createLaunch({
   id: "acme-launch",
@@ -91,7 +91,7 @@ const launch = createLaunch(config, {
 
 ## User Access
 
-LaunchKit accepts your user object; it does not authenticate anyone. Direct phase criteria are
+Launch-Kit accepts your user object; it does not authenticate anyone. Direct phase criteria are
 combined with AND semantics, while values inside an array use OR semantics.
 
 ```ts
@@ -144,7 +144,7 @@ Unknown cohort references fail immediately with a `LaunchConfigurationError`.
 ## Percentage Rollouts
 
 Rollouts assign each eligible user to a stable bucket from 0 through 99 using the launch id, phase
-name, and user id. LaunchKit never uses `Math.random()`.
+name, and user id. Launch-Kit never uses `Math.random()`.
 
 ```ts
 earlyAccess: { allow: ["paid"], rollout: 25 }
@@ -168,7 +168,7 @@ Steps must be chronological and percentages cannot decrease.
 
 ## Invite Codes
 
-LaunchKit coordinates validation but does not store invite codes. Supply trusted application logic:
+Launch-Kit coordinates validation but does not store invite codes. Supply trusted application logic:
 
 ```ts
 const launch = createLaunch({
@@ -200,7 +200,7 @@ const launch = createLaunch({
 ```
 
 Every listed rule must pass. A false result returns `CUSTOM_RULE_DENIED`; thrown errors are wrapped
-in `LaunchRuleEvaluationError`. LaunchKit never executes rules from JSON or remote configuration.
+in `LaunchRuleEvaluationError`. Launch-Kit never executes rules from JSON or remote configuration.
 
 ## Feature Launches
 
@@ -228,7 +228,7 @@ may hide a beta button, but it is not a security boundary. Re-check access in th
 action, function, or service that serves the protected operation or data.
 
 Treat invite codes, user fields, request context, and all other client-provided values as untrusted.
-Keep secrets out of LaunchKit configuration. Validate invites through trusted server-side logic.
+Keep secrets out of Launch-Kit configuration. Validate invites through trusted server-side logic.
 
 ## TypeScript
 
@@ -274,7 +274,7 @@ Use `npm run check` to run the complete verification pipeline.
 
 ## Privacy
 
-LaunchKit contains no telemetry or analytics, collects no user information, sends no configuration
+Launch-Kit contains no telemetry or analytics, collects no user information, sends no configuration
 anywhere, and makes no external requests. Access evaluation is local and deterministic except for
 the custom functions your application explicitly supplies.
 
