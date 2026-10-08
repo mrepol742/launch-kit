@@ -230,25 +230,6 @@ action, function, or service that serves the protected operation or data.
 Treat invite codes, user fields, request context, and all other client-provided values as untrusted.
 Keep secrets out of Launch-Kit configuration. Validate invites through trusted server-side logic.
 
-## TypeScript
-
-The package includes declarations and is written in strict TypeScript. Extend the user and context
-types when custom rules need application-specific data:
-
-```ts
-interface AppUser extends LaunchUser<{ accountAge: number }> {
-  organizationId: string;
-}
-
-const launch = createLaunch<AppUser, { country: string }>({
-  rules: {
-    eligible: ({ user, context }) =>
-      user.metadata.accountAge >= 30 && context?.country === "PH",
-  },
-  phases: { beta: { rules: ["eligible"] } },
-});
-```
-
 ## API Reference
 
 - `createLaunch(config, options?)` validates configuration and creates a launch controller.
@@ -271,17 +252,6 @@ npm run build
 ```
 
 Use `npm run check` to run the complete verification pipeline.
-
-## Privacy
-
-Launch-Kit contains no telemetry or analytics, collects no user information, sends no configuration
-anywhere, and makes no external requests. Access evaluation is local and deterministic except for
-the custom functions your application explicitly supplies.
-
-## Contributing
-
-Issues and pull requests are welcome. See [CONTRIBUTING.md](./CONTRIBUTING.md) for the local workflow
-and project expectations.
 
 ## License
 
